@@ -1,3 +1,4 @@
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBocnin97y62qx8MgnSek_U278ALDO3J1U",
   authDomain: "loginwebapp-a0881.firebaseapp.com",
@@ -6,16 +7,34 @@ const firebaseConfig = {
   messagingSenderId: "527045225230",
   appId: "1:527045225230:web:8b61c5a862ba148d47455f"
 };
+
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 
+// 🔐 Auth check
+auth.onAuthStateChanged((user) => {
+  if (!user) {
+    window.location.href = "login.html";
+  } else {
+    loadPosts();
+  }
+});
+
+// Logout
+function logout() {
+  auth.signOut().then(() => {
+    window.location.href = "login.html";
+  });
+}
+
+// 📄 Form
 const form = document.getElementById('postForm');
 const titleInput = document.getElementById('title');
 const contentInput = document.getElementById('content');
 const postIdInput = document.getElementById('postId');
 const postList = document.getElementById('postList');
 
-// Submit Form
 form.onsubmit = async (e) => {
   e.preventDefault();
   const title = titleInput.value;
@@ -36,6 +55,7 @@ form.onsubmit = async (e) => {
   loadPosts();
 };
 
+// 📄 Load posts
 function loadPosts() {
   postList.innerHTML = "";
   db.collection("posts").orderBy("timestamp", "desc").get().then(snapshot => {
@@ -69,5 +89,3 @@ function deletePost(id) {
     db.collection("posts").doc(id).delete().then(loadPosts);
   }
 }
-
-loadPosts();
