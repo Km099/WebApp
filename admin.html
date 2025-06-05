@@ -7,7 +7,10 @@
 </head>
 <body class="bg-gray-100 text-gray-800 p-6">
   <div class="max-w-2xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold">🛠️ Blog Admin Panel</h1>
+    <div class="flex justify-between items-center">
+      <h1 class="text-2xl font-bold">🛠️ Blog Admin Panel</h1>
+      <button onclick="logout()" class="bg-red-600 text-white px-4 py-1 rounded">Logout</button>
+    </div>
 
     <form id="postForm" class="bg-white p-4 rounded shadow space-y-4">
       <input type="hidden" id="postId" />
@@ -19,9 +22,10 @@
     <div id="postList" class="space-y-2"></div>
   </div>
 
-  <!-- Firebase SDK -->
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
   <script src="./admin.js"></script>
 </body>
 </html>
