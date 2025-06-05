@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - Blog Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 p-6">
+  <div class="max-w-2xl mx-auto space-y-6">
+    <h1 class="text-2xl font-bold">🛠️ Blog Admin Panel</h1>
+
+    <form id="postForm" class="bg-white p-4 rounded shadow space-y-4">
+      <input type="hidden" id="postId" />
+      <input type="text" id="title" placeholder="Post Title" class="w-full p-2 border" required />
+      <textarea id="content" placeholder="Post Content" class="w-full p-2 border h-32" required></textarea>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Save Post</button>
+    </form>
+
+    <div id="postList" class="space-y-2"></div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="./admin.js"></script>
+</body>
+</html>
