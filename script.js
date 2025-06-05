@@ -15,9 +15,8 @@ const db = firebase.firestore();
 
 const postsContainer = document.getElementById("posts");
 
+// 🔥 Correctly query from root-level 'posts' collection
 db.collection("posts")
-  .doc("M51FOTNgDp8YzW1Hzcjm") // parent document
-  .collection("posts")        // subcollection where blog posts actually are
   .orderBy("timestamp", "desc")
   .get()
   .then((snapshot) => {
@@ -34,4 +33,7 @@ db.collection("posts")
       `;
       postsContainer.appendChild(div);
     });
+  })
+  .catch((error) => {
+    console.error("Error loading posts:", error);
   });
