@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <title>Simple Blog</title>
-  <link rel="icon" href="https://fav.farm/📝" />
+  <link rel="icon" href="https://fav.farm/📝">
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Firebase SDK -->
-  <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-
-  <!-- Your JavaScript -->
-  <script defer src="script.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 p-6">
   <div class="max-w-3xl mx-auto">
     <h1 class="text-3xl font-bold mb-6">📝 Simple Blog</h1>
     <div id="posts" class="space-y-4"></div>
   </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
