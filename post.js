@@ -13,22 +13,18 @@ const db = firebase.firestore();
 const postId = new URLSearchParams(window.location.search).get("id");
 const postContainer = document.getElementById("post");
 
-db.collection("posts")
-  .doc(postId)
-  .get()
-  .then(doc => {
-    if (doc.exists) {
-      const post = doc.data();
-      postContainer.innerHTML = `
-        <h1 class="text-3xl font-bold">${post.title}</h1>
-        <p class="text-sm text-gray-500 mb-4">${new Date(post.timestamp.toDate()).toLocaleString()}</p>
-        <div class="bg-white p-4 rounded shadow">${post.content}</div>
-      `;
-    } else {
-      postContainer.innerHTML = "<p>Post not found.</p>";
-    }
-  })
-  .catch(error => {
-    console.error("Error fetching post:", error);
-    postContainer.innerHTML = "<p class='text-red-600'>Error loading post.</p>";
-  });
+db.collection("posts").doc(postId).get().then(doc => {
+  if (doc.exists) {
+    const post = doc.data();
+    postContainer.innerHTML = `
+      <h1 class="text-3xl font-bold">${post.title}</h1>
+      <p class="text-sm text-gray-500 mb-4">${new Date(post.timestamp.toDate()).toLocaleString()}</p>
+      <div class="bg-white p-4 rounded shadow">${post.content}</div>
+    `;
+  } else {
+    postContainer.innerHTML = "<p>Post not found.</p>";
+  }
+}).catch(err => {
+  console.error("Failed to load post:", err);
+  postContainer.innerHTML = "<p class='text-red-600'>Failed to load post.</p>";
+});
