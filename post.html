@@ -10,11 +10,20 @@
   <div class="max-w-3xl mx-auto">
     <a href="index.html" class="text-blue-600 underline mb-4 inline-block">← Back to Blog</a>
     <div id="post" class="space-y-4"></div>
+
+    <h2 class="text-xl font-semibold mt-8">💬 Comments</h2>
+    <form id="commentForm" class="mt-2 space-y-2">
+      <input id="commentName" class="w-full p-2 border" placeholder="Your Name" required />
+      <textarea id="commentText" class="w-full p-2 border h-20" placeholder="Your Comment" required></textarea>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded" type="submit">Post Comment</button>
+    </form>
+
+    <div id="comments" class="mt-4 space-y-4"></div>
   </div>
 
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-  <script src="./post.js"></script>
+  <script src="post.js"></script>
 </body>
 </html>
