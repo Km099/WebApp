@@ -15,6 +15,7 @@ const postsContainer = document.getElementById("posts");
 db.collection("posts").orderBy("timestamp", "desc").get().then(snapshot => {
   snapshot.forEach(doc => {
     const post = doc.data();
+    post.id = doc.id; 
     const div = document.createElement("div");
     div.innerHTML = `
       <a href="post.html?id=${doc.id}" class="block p-4 bg-white rounded shadow hover:bg-gray-50">
