@@ -7,19 +7,23 @@ const firebaseConfig = {
   appId: "1:527045225230:web:8b61c5a862ba148d47455f"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 const db = firebase.firestore();
 
-// Load posts
 const postsContainer = document.getElementById("posts");
 
 db.collection("posts")
+  .doc("M51FOTNgDp8YzW1Hzcjm") // parent document
+  .collection("posts")        // subcollection where blog posts actually are
   .orderBy("timestamp", "desc")
   .get()
   .then((snapshot) => {
     snapshot.forEach((doc) => {
       const post = doc.data();
-      const id = doc.id; // <- GET ID HERE
+      const id = doc.id;
 
       const div = document.createElement("div");
       div.innerHTML = `
